@@ -91,7 +91,7 @@ PRAT rat_six = nullptr;
 PRAT rat_half = nullptr;
 PRAT rat_ten = nullptr;
 PRAT pt_eight_five = nullptr;
-PRAT pi = nullptr;
+PRAT pi_internal = nullptr; // originally named `pi`. add an `_internal` suffix to prevent the name conflict with the one in Apple CoreServices framework.
 PRAT pi_over_two = nullptr;
 PRAT two_pi = nullptr;
 PRAT one_pt_five_pi = nullptr;
@@ -229,15 +229,15 @@ void ChangeConstants(uint32_t radix, int32_t precision)
         // Apparently when dividing 180 by pi, another (internal) digit of
         // precision is needed.
         int32_t extraPrecision = precision + g_ratio;
-        DUPRAT(pi, rat_half);
-        asinrat(&pi, radix, extraPrecision);
-        mulrat(&pi, rat_six, extraPrecision);
-        DUMPRAWRAT(pi);
+        DUPRAT(pi_internal, rat_half);
+        asinrat(&pi_internal, radix, extraPrecision);
+        mulrat(&pi_internal, rat_six, extraPrecision);
+        DUMPRAWRAT(pi_internal);
 
-        DUPRAT(two_pi, pi);
-        DUPRAT(pi_over_two, pi);
-        DUPRAT(one_pt_five_pi, pi);
-        addrat(&two_pi, pi, extraPrecision);
+        DUPRAT(two_pi, pi_internal);
+        DUPRAT(pi_over_two, pi_internal);
+        DUPRAT(one_pt_five_pi, pi_internal);
+        addrat(&two_pi, pi_internal, extraPrecision);
         DUMPRAWRAT(two_pi);
 
         divrat(&pi_over_two, rat_two, extraPrecision);
@@ -266,12 +266,12 @@ void ChangeConstants(uint32_t radix, int32_t precision)
 
         destroyrat(rad_to_deg);
         rad_to_deg = i32torat(180L);
-        divrat(&rad_to_deg, pi, extraPrecision);
+        divrat(&rad_to_deg, pi_internal, extraPrecision);
         DUMPRAWRAT(rad_to_deg);
 
         destroyrat(rad_to_grad);
         rad_to_grad = i32torat(200L);
-        divrat(&rad_to_grad, pi, extraPrecision);
+        divrat(&rad_to_grad, pi_internal, extraPrecision);
         DUMPRAWRAT(rad_to_grad);
     }
     else
@@ -626,7 +626,7 @@ void _readconstants(void)
     READRAWRAT(rat_neg_one);
     READRAWRAT(rat_half);
     READRAWRAT(rat_ten);
-    READRAWRAT(pi);
+    READRAWRAT(pi_internal);
     READRAWRAT(two_pi);
     READRAWRAT(pi_over_two);
     READRAWRAT(one_pt_five_pi);

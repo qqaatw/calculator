@@ -202,7 +202,7 @@ void acosrat(_Inout_ PRAT* px, uint32_t radix, int32_t precision)
     {
         if (sgn == -1)
         {
-            DUPRAT(*px, pi);
+            DUPRAT(*px, pi_internal);
         }
         else
         {
@@ -322,6 +322,6 @@ void atanrat(_Inout_ PRAT* px, uint32_t radix, int32_t precision)
     }
     if (rat_gt(*px, pi_over_two, precision))
     {
-        subrat(px, pi, precision);
+        subrat(px, pi_internal, precision);
     }
 }

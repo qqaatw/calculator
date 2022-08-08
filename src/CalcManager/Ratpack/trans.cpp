@@ -110,7 +110,7 @@ void sinanglerat(_Inout_ PRAT* pa, AngleType angletype, uint32_t radix, int32_t 
             subrat(pa, rat_360, precision);
         }
         divrat(pa, rat_180, precision);
-        mulrat(pa, pi, precision);
+        mulrat(pa, pi_internal, precision);
         break;
     case AngleType::Gradians:
         if (rat_gt(*pa, rat_200, precision))
@@ -118,7 +118,7 @@ void sinanglerat(_Inout_ PRAT* pa, AngleType angletype, uint32_t radix, int32_t 
             subrat(pa, rat_400, precision);
         }
         divrat(pa, rat_200, precision);
-        mulrat(pa, pi, precision);
+        mulrat(pa, pi_internal, precision);
         break;
     }
     _sinrat(pa, precision);
@@ -209,7 +209,7 @@ void cosanglerat(_Inout_ PRAT* pa, AngleType angletype, uint32_t radix, int32_t 
             *pa = ptmp;
         }
         divrat(pa, rat_180, precision);
-        mulrat(pa, pi, precision);
+        mulrat(pa, pi_internal, precision);
         break;
     case AngleType::Gradians:
         if (rat_gt(*pa, rat_200, precision))
@@ -221,7 +221,7 @@ void cosanglerat(_Inout_ PRAT* pa, AngleType angletype, uint32_t radix, int32_t 
             *pa = ptmp;
         }
         divrat(pa, rat_200, precision);
-        mulrat(pa, pi, precision);
+        mulrat(pa, pi_internal, precision);
         break;
     }
     _cosrat(pa, radix, precision);
@@ -275,7 +275,7 @@ void tananglerat(_Inout_ PRAT* pa, AngleType angletype, uint32_t radix, int32_t 
             subrat(pa, rat_180, precision);
         }
         divrat(pa, rat_180, precision);
-        mulrat(pa, pi, precision);
+        mulrat(pa, pi_internal, precision);
         break;
     case AngleType::Gradians:
         if (rat_gt(*pa, rat_200, precision))
@@ -283,7 +283,7 @@ void tananglerat(_Inout_ PRAT* pa, AngleType angletype, uint32_t radix, int32_t 
             subrat(pa, rat_200, precision);
         }
         divrat(pa, rat_200, precision);
-        mulrat(pa, pi, precision);
+        mulrat(pa, pi_internal, precision);
         break;
     }
     _tanrat(pa, radix, precision);

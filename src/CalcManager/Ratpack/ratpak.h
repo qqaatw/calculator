@@ -60,7 +60,7 @@ typedef struct _number
                     // radix being used.
     int32_t exp;    // The offset of digits from the radix point
                     // (decimal point in radix 10)
-    MANTTYPE mant[];
+    MANTTYPE mant[100];  // Clang doesn't support flexible array initialization so give it a fixed size.
     // This is actually allocated as a continuation of the
     // NUMBER structure.
 } NUMBER, *PNUMBER, **PPNUMBER;
@@ -104,7 +104,7 @@ extern PRAT rat_six;
 extern PRAT rat_half;
 extern PRAT rat_ten;
 extern PRAT pt_eight_five;
-extern PRAT pi;
+extern PRAT pi_internal;  // originally named `pi`. add an `_internal` suffix to prevent the name conflict with the one in Apple CoreServices framework.
 extern PRAT pi_over_two;
 extern PRAT two_pi;
 extern PRAT one_pt_five_pi;

@@ -715,7 +715,7 @@ void CCalcEngine::ProcessCommandWorker(OpCode wParam)
         if (!m_fIntegerMode)
         {
             CheckAndAddLastBinOpToHistory(); // pi is like entering the number
-            m_currentVal = Rational{ (m_bInv ? two_pi : pi) };
+            m_currentVal = Rational{ (m_bInv ? two_pi : pi_internal) };
 
             DisplayNum();
             m_bInv = false;

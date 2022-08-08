@@ -11,7 +11,7 @@
 #include <algorithm>
 #include <array>
 #include <cassert>
-#include <intsafe.h>
+//#include <intsafe.h>  # comment out winAPI
 #include <list>
 #include <future>
 #include <regex>
@@ -19,7 +19,7 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
-#include <winerror.h>
+//#include <winerror.h>  # comment out winAPI
 #include <iostream>
 #include <cmath>
 #include <random>

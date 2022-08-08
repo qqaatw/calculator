@@ -5,6 +5,7 @@
 
 #include <memory> // for std::shared_ptr
 #include <vector>
+#include <string> // for std::wstring* in CalcManager/CalculatorHistory.h and CalcManager/Header Files/IHistoryDisplay.h
 #include "Command.h"
 #include "sal_cross_platform.h"
 
